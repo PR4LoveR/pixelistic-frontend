@@ -8,10 +8,6 @@ const UsersCountBar = props => {
   const { users } = props;
   let numActive = 0;
   let numSuspended = 0;
-  const countActive = users.map(item => {
-    item.isActive ? numActive += 1 : numSuspended +=1;
-    return item;
-  });
   
   return (
     <Toolbar>
