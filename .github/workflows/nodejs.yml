@@ -26,7 +26,7 @@ jobs:
     #- run: npm test
      # env:
       #    CI: true
-    - run: npm build
+    - run: npm run-scripts build
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@master
       with:
@@ -36,4 +36,4 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
-        SOURCE_DIR: "pixelistic-frontend/build"
+        SOURCE_DIR: "build"
