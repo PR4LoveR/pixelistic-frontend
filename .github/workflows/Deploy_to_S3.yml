@@ -6,8 +6,6 @@ name: Node.js CI
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -25,9 +23,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
-    #- run: npm test
-     # env:
-      #    CI: true
     - run: npm build
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@master
