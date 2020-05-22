@@ -23,8 +23,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm test
+    - run: HOST=localhos npm install
+    - run: HOST=localhos npm test
       env:
         CI: true
-    - run: npm run-script build
+    - run: HOST=localhost npm run-script build
