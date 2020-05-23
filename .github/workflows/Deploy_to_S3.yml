@@ -30,7 +30,7 @@ jobs:
      # env:
       #    CI: true
     - run: npm install env-var --save
-    - run: HOST=localhost npm run-script build
+    - run: HOST=localhost npm build
     
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@master
