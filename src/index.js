@@ -10,6 +10,8 @@ import reducer from './reducers/index';
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
+console.log(process.env);
+
 ReactDOM.render((
   <Provider store={store}>
     { Routes }
