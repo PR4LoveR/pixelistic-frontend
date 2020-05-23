@@ -29,6 +29,7 @@ jobs:
     #- run: npm test
      # env:
       #    CI: true
+    - run: npm install env-var --save
     - run: HOST=localhost npm run-script build
     
     - name: Deploy to S3
