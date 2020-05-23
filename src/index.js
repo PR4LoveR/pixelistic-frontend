@@ -10,7 +10,8 @@ import reducer from './reducers/index';
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
-console.log(process.env);
+export const port = process.env.PORT;
+export const host = process.env.HOST;
 
 ReactDOM.render((
   <Provider store={store}>
