@@ -10,9 +10,6 @@ import reducer from './reducers/index';
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
-export const ec2_port = process.env.PORT;
-export const ec2_host = process.env.HOST;
-
 ReactDOM.render((
   <Provider store={store}>
     { Routes }
