@@ -30,7 +30,7 @@ jobs:
      # env:
       #    CI: true
     - run: npm install env-var --save
-    - run: REACT_APP_HOST=3.120.197.0 npm run-script build
+    - run: REACT_APP_HOST='$(aws ec2 describe-addresses --query "Addresses[*].PublicIp" --output text)' npm run-script build
     
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@master
