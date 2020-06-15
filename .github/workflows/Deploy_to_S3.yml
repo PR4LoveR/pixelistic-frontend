@@ -29,16 +29,13 @@ jobs:
     #- run: npm test
      # env:
       #    CI: true
-    - run: npm install env-var --save
-    - run: REACT_APP_HOST=''$(aws ec2 describe-addresses --query "Addresses[*].PublicIp" --output text)'' npm run-script build
-    
-    - name: Deploy to S3
-      uses: jakejarvis/s3-sync-action@master
+    #- run: npm install env-var --save
+    #- run: REACT_APP_HOST=''$(aws ec2 describe-addresses --query "Addresses[*].PublicIp" --output text)'' npm run-script build
+    - name: Build and push backend image
+      uses: docker/build-push-action@v1.1.0
       with:
-        args: --acl public-read --delete
-      env:
-        AWS_S3_BUCKET: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: ${{ secrets.AWS_REGION }}
-        SOURCE_DIR: "build"
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_PASS }}
+        dockerfile: Dockerfile
+        repository: ${{ secrets.DOCKER_USER }}/${{ secrets.FRONTEND_NAME }}
+        tags: latest
